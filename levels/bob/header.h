@@ -8,7 +8,7 @@ extern const GeoLayout bob_geo_000440[];
 extern const GeoLayout bob_geo_000458[];
 extern const GeoLayout bob_geo_000470[];
 extern const GeoLayout bob_geo_000488[];
-
+extern const GeoLayout spindrift_geo[];
 // leveldata
 extern const Gfx bob_seg7_dl_07004390[];
 extern const Gfx bob_seg7_dl_07009D80[];
@@ -28,7 +28,10 @@ extern const Trajectory bob_seg7_metal_ball_path0[];
 extern const Trajectory bob_seg7_metal_ball_path1[];
 extern const Trajectory bob_seg7_trajectory_koopa[];
 
+
 // script
 extern const LevelScript level_bob_entry[];
 
+
+#include "levels/bob/header.inc.h"
 #endif
