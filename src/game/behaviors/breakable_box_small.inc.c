@@ -1,7 +1,7 @@
 // breakable_box.inc.c
 
 struct ObjectHitbox sBreakableBoxSmallHitbox = {
-    /* interactType:      */ INTERACT_GRABBABLE,
+    /* interactType:      */ INTERACT_GRABBABLE, // prev interact_grabbable
     /* downOffset:        */ 20,
     /* damageOrCoinValue: */ 0,
     /* health:            */ 1,

@@ -1332,12 +1332,12 @@ u32 interact_hit_from_below(struct MarioState *m, UNUSED u32 interactType, struc
 
         if (interaction & INT_HIT_FROM_ABOVE) {
             if (obj->oInteractionSubtype & INT_SUBTYPE_TWIRL_BOUNCE) {
-                bounce_off_object(m, obj, 80.0f);
+                bounce_off_object(m, obj, 115.0f); /* Orig 80*/
                 reset_mario_pitch(m);
                 play_sound(SOUND_MARIO_TWIRL_BOUNCE, m->marioObj->header.gfx.cameraToObject);
                 return drop_and_set_mario_action(m, ACT_TWIRLING, 0);
             } else {
-                bounce_off_object(m, obj, 30.0f);
+                bounce_off_object(m, obj, 50.0f); // Orig 30
             }
         }
     } else if (take_damage_and_knock_back(m, obj)) {
@@ -1368,12 +1368,12 @@ u32 interact_bounce_top(struct MarioState *m, UNUSED u32 interactType, struct Ob
 
         if (interaction & INT_HIT_FROM_ABOVE) {
             if (obj->oInteractionSubtype & INT_SUBTYPE_TWIRL_BOUNCE) {
-                bounce_off_object(m, obj, 80.0f);
+                bounce_off_object(m, obj, 115.0f); // orig 80
                 reset_mario_pitch(m);
                 play_sound(SOUND_MARIO_TWIRL_BOUNCE, m->marioObj->header.gfx.cameraToObject);
                 return drop_and_set_mario_action(m, ACT_TWIRLING, 0);
             } else {
-                bounce_off_object(m, obj, 30.0f);
+                bounce_off_object(m, obj, 50.0f); // Orig 30
             }
         }
     } else if (take_damage_and_knock_back(m, obj)) {
@@ -1427,7 +1427,7 @@ u32 interact_breakable(struct MarioState *m, UNUSED u32 interactType, struct Obj
 
         switch (interaction) {
             case INT_HIT_FROM_ABOVE:
-                bounce_off_object(m, obj, 30.0f); //! Not in the 0x8F mask
+                bounce_off_object(m, obj, 50.0f); //! Not in the 0x8F mask, Orig 30
                 break;
 
             case INT_HIT_FROM_BELOW:

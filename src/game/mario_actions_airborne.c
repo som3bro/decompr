@@ -696,6 +696,8 @@ s32 act_twirling(struct MarioState *m) {
 
         case AIR_STEP_HIT_WALL:
             mario_bonk_reflection(m, FALSE);
+            m->faceAngle[1] += 0x8000; // To revert, remove this and the below line, and change the above FALSE to TRUE(i think lol).
+            set_mario_action(m, ACT_AIR_HIT_WALL, 0);
             break;
 
         case AIR_STEP_HIT_LAVA_WALL:
