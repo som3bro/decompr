@@ -7,15 +7,16 @@ struct ObjectHitbox sBreakableBoxSmallHitbox = {
     /* health:            */ 1,
     /* numLootCoins:      */ 0,
     /* radius:            */ 150,
-    /* height:            */ 250,
+    /* height:            */ 250, //ORIG 250
     /* hurtboxRadius:     */ 150,
-    /* hurtboxHeight:     */ 250,
+    /* hurtboxHeight:     */ 250, //ORIG 250
 };
 
 void bhv_breakable_box_small_init(void) {
     o->oGravity = 2.5f;
     o->oFriction = 0.99f;
     o->oBuoyancy = 1.4f;
+    o->oInteractionSubtype = INT_SUBTYPE_BOUNCABLE;
     cur_obj_scale(0.4f);
     obj_set_hitbox(o, &sBreakableBoxSmallHitbox);
     o->oAnimState = BREAKABLE_BOX_ANIM_STATE_CORK_BOX;
@@ -109,7 +110,7 @@ void breakable_box_small_get_thrown(void) {
     o->oHeldState = HELD_FREE;
     o->oFlags &= ~OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
     o->oForwardVel = 40.0f;
-    o->oVelY = 20.0f;
+    o->oVelY = 15.0f; // Originally 20.0f
     o->oBreakableBoxSmallReleased = TRUE;
     o->oBreakableBoxSmallFramesSinceReleased = 0;
     o->activeFlags &= ~ACTIVE_FLAG_DESTRUCTIVE_OBJ_DONT_DESTROY;

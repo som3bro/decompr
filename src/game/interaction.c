@@ -1619,6 +1619,11 @@ u32 interact_grabbable(struct MarioState *m, u32 interactType, struct Object *ob
         }
     }
 
+    if (obj->oInteractionSubtype & INT_SUBTYPE_BOUNCABLE) {
+        u32 interaction = determine_interaction(m, obj);
+        if (interaction & INT_HIT_FROM_ABOVE) bounce_off_object(m, obj, 50.0f); // I MADE THIS
+    }
+
     if ((obj->oInteractionSubtype & INT_SUBTYPE_GRABS_MARIO)) {
         if (check_object_grab_mario(m, interactType, obj)) {
             return TRUE;
