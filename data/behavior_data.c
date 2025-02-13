@@ -57,6 +57,7 @@
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
 
+
 #define BC_B(a) _SHIFTL(a, 24, 8)
 #define BC_BB(a, b) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8))
 #define BC_BBBB(a, b, c, d) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8) | _SHIFTL(c, 8, 8) | _SHIFTL(d, 0, 8))
@@ -388,6 +389,22 @@ enum BehaviorCommands {
 #define SPAWN_WATER_DROPLET(dropletParams) \
     BC_BPTR(BHV_CMD_SPAWN_WATER_DROPLET, dropletParams)
 
+
+/* fast64 object exports get inserted here */
+const BehaviorScript bhvCheckp[] = {
+	BEGIN(OBJ_LIST_SURFACE),
+	OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+	LOAD_COLLISION_DATA(Checkp_collision),
+    
+
+	BEGIN_LOOP(),
+
+        CALL_NATIVE(bhv_checkp),
+
+		CALL_NATIVE(load_object_collision_model),
+	END_LOOP(),
+
+};
 
 const BehaviorScript bhvStarDoor[] = {
     BEGIN(OBJ_LIST_SURFACE),

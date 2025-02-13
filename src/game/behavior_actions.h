@@ -1,6 +1,10 @@
 #ifndef BEHAVIOR_ACTIONS_H
 #define BEHAVIOR_ACTIONS_H
 
+// MY STUFF
+
+void bhv_checkp(void);
+
 void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size);
 void bhv_spawn_star_no_level_exit(u32 params);
 void bhv_door_rendering_loop(void);

@@ -350,6 +350,14 @@ void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg
 }
 
 void init_mario_after_warp(void) {
+
+    if(gMarioStates->warpID != 0) {
+        sWarpDest.nodeId = gMarioStates->warpID;
+    }
+
+    if (sWarpDest.arg == WARP_FLAG_EXIT_COURSE) {
+        sWarpDest.nodeId = 0x1F; // PROPERLY RESETS WARP ID FOR COURSE EXIT
+    }
     struct Object *object = get_destination_warp_object(sWarpDest.nodeId);
 
 #ifdef DEBUG_ASSERTIONS
@@ -559,6 +567,8 @@ void check_instant_warp(void) {
                 gMarioState->marioObj->oPosY = gMarioState->pos[1];
                 gMarioState->marioObj->oPosZ = gMarioState->pos[2];
 
+/// THIS POLKACE IS IMPORTANT :3
+
                 // Fix instant warp offset not working when warping across different areas
                 gMarioObject->header.gfx.pos[0] = gMarioState->pos[0];
                 gMarioObject->header.gfx.pos[1] = gMarioState->pos[1];
@@ -725,6 +735,8 @@ void initiate_painting_warp(void) {
 s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     s32 fadeMusic = TRUE;
 
+    // IF IT'S NOT 0 THEN THE CHECKPOINT EXISTS
+     
     if (sDelayedWarpOp == WARP_OP_NONE) {
         m->invincTimer = -1;
         sDelayedWarpArg = WARP_FLAGS_NONE;
@@ -761,6 +773,8 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                     sDelayedWarpOp = WARP_OP_GAME_OVER;
                 }
 #endif
+
+                
                 sDelayedWarpTimer = 48;
                 sSourceWarpNodeId = WARP_NODE_DEATH;
                 play_transition(WARP_TRANSITION_FADE_INTO_BOWSER, sDelayedWarpTimer, 0x00, 0x00, 0x00);

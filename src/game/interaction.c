@@ -876,6 +876,7 @@ u32 interact_bbh_entrance(struct MarioState *m, UNUSED u32 interactType, struct 
 u32 interact_warp(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     u32 action;
 
+
     if (obj->oInteractionSubtype & INT_SUBTYPE_FADING_WARP) {
         action = m->action;
 

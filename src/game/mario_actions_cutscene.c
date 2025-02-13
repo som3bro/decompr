@@ -742,6 +742,9 @@ s32 act_death_on_stomach(struct MarioState *m) {
 }
 
 s32 act_quicksand_death(struct MarioState *m) {
+
+    
+
     if (m->actionState == ACT_STATE_QUICKSAND_DEATH_INIT) {
         set_mario_animation(m, MARIO_ANIM_DYING_IN_QUICKSAND);
         set_anim_to_frame(m, 60);
